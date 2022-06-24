@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style>
+<style soped>
 #tab-bar {
     position: absolute;
     display: flex;

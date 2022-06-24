@@ -10,7 +10,7 @@ import MinTabbar from "./components/content/tabber/MinTabbar.vue"
 export default {
   name:'App',
   components:{
-    MinTabbar
+    MinTabbar,
   }
 }
 </script>
