@@ -17,7 +17,8 @@ export default {
     display: flex;
     height: 44px;
     line-height: 44px;
-    box-shadow: 0 1px 3px rgba(198, 173, 173, 0.225);
+    box-shadow: 0 -2px 3px rgba(255, 166, 166, 0.436) inset;
+    /* padding-bottom: 5px; */
   }
   .nav_bar_left,
   .nav_bar_right{
