@@ -22,6 +22,7 @@ export default {
     display: flex;
     box-sizing: border-box;
     border-bottom: 8px solid #eee;
+    padding:15px 0;
   }
   .recommend_btn {
     flex: 1;
@@ -30,6 +31,5 @@ export default {
   }
   .recommend_btn img {
     width: 80%;
-    margin-bottom: 10px;
   }
 </style>

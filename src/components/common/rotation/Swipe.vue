@@ -1,5 +1,5 @@
 <template>
-  <van-swipe class="my-swipe" :autoplay="3000" indicator-color="#fff">
+  <van-swipe class="my-swipe" :autoplay="3000" indicator-color="#fff" lazy-render>
     <slot>
       <!-- <van-swipe-item>1</van-swipe-item>
       <van-swipe-item>2</van-swipe-item>
