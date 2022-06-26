@@ -4,6 +4,13 @@
   padding: 0;
   margin: 0;
 }
+
 a {
   color: rgb(10, 10, 10)
+}
+
+body {
+  font-family: PingFang SC, HarmonyOS_Regular, Helvetica Neue, Microsoft YaHei, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
 }

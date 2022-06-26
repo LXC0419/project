@@ -35,7 +35,7 @@ export function requestA(config){
 export function requestB(config) {
   const axiosB = axios.create({
     baseURL:'http://152.136.185.210:7878/api/hy66',
-    timeout:5000
+    // timeout:5000
   })
 
   // 网络请求

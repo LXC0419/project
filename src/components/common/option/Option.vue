@@ -19,6 +19,7 @@ export default {
   methods:{
     tabClick(index){
       this.cont=index
+      this.$emit('tabClick',index)
     }
   }
 }

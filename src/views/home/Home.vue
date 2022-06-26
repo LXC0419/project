@@ -12,7 +12,9 @@
     <!-- 特征 -->
     <Feature  />
     <!-- 选项卡 -->
-    <Option :titles="['流行','新款','精选']" class="option" />
+    <Option :titles="['流行','新款','精选']" class="option" @tabClick="tabClick" />
+    <!-- 选项卡的流行 -->
+    <GoodsList :goods="goods[currentType].list" />
 
   </div>
 </template>
@@ -28,9 +30,11 @@ import Recommend from './childHome/Recommend.vue'
 import Feature from './childHome/HomeFeature.vue'
 // 引用选项卡
 import Option from '../../components/common/option/Option.vue'
+// 引用选项卡的流行
+import GoodsList from '../../components/content/goods/GoodsList.vue'
 
 // 调用后台数据
-import {getHomedata} from '../../network/nethome'
+import {getHomedata,getHomeGood} from '../../network/nethome'
 
 
 export default {
@@ -44,6 +48,7 @@ export default {
         new:{page:0,list:[]},
         sell:{page:0,list:[]}
       },
+      currentType:'pop'
     }
   },
   components:{
@@ -51,17 +56,49 @@ export default {
     Homeswiper,
     Recommend ,
     Feature,
-    Option
+    Option,
+    GoodsList
   },
-    created() {
+  methods:{
+  tabClick(index){
+    switch(index){
+      case 0:
+        this.currentType='pop'
+        break
+      case 1:
+        this.currentType='new'
+        break 
+      case 2:
+        this.currentType='sell'
+        break
+    }
+  },
+
+    getHomedatas(){
       getHomedata().then(res =>{
       this.banners=res.data.data.banner.list
       this.recommends=res.data.data.recommend.list
-      console.log(res.data.data.recommend.list)
+      // console.log(res.data.data.recommend.list)
       },err=>{
         console.log('接受不到数据',err)
       }) 
-    
+    },
+    getHomeGoods(type){
+      const page = this.goods[type].page + 1
+      // this.goods[type].page=page
+      getHomeGood(type,page).then(res=>{
+        this.goods[type].list.push(...res.data.data.list)
+        this.goods[type].page+=1
+      },err=>{
+        console.log('选项卡数据出错啦',err)
+      })
+    }
+  },
+    created() {
+      this.getHomedatas()
+      this.getHomeGoods('pop')
+      this.getHomeGoods('new')
+      this.getHomeGoods('sell')
   }, 
 }
 </script>
@@ -70,7 +107,7 @@ export default {
   .nav_bar {
     position: fixed;
     top: 0;
-    z-index: 999;
+    z-index: 99;
     width: 100%;
     background-color:rgb(200, 144, 153);
   }
@@ -94,4 +131,5 @@ export default {
     /* bottom: 100px; */
     background-color: #eee;
   }
+  
 </style>

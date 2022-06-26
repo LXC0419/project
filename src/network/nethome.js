@@ -6,9 +6,9 @@ export function getHomedata(){
   })
 }
 
-export function getHomeOptions(type,page){
+export function getHomeGood(type,page){
   return requestB({
-    url:'/hoem/data',
+    url:'/home/data',
     params: {
       type,
       page
